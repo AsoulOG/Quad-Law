@@ -1,3 +1,12 @@
+CANONICAL SPEC — READ ONLY
+
+This document defines the immutable verifier law.
+It is complete and final.
+
+Any modification constitutes a fork and breaks compatibility.
+Authority is determined solely by hash equivalence.
+
+There are no updates. Only forks.
 
 ## JSON Canonicalization (JCS)
 - **No floats / NaN / ±Inf** allowed in canonicalized objects.
