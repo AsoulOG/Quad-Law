@@ -1,0 +1,31 @@
+
+## JSON Canonicalization (JCS)
+- **No floats / NaN / ±Inf** allowed in canonicalized objects.
+- **Strings NFC-normalized** before encoding.
+- **Keys sorted** lexicographically at every object level.
+- Output is **minified JSON** (commas/colons only) and **UTF‑8** is hashed/signed.
+- If floats appear, Sentinel fails (explicit), not silently rounding.
+
+## Merkle v2 (deterministic & collision‑safe)
+- **Leaf preimage**: `0x00 || len(leaf_bytes, u32‑be) || leaf_bytes`
+- **Node preimage**: `0x01 || left_hash || right_hash`
+- **Hash**: SHA‑256 over the preimage; lowercase hex output.
+- **Odd‑leaf policy**: **RFC6962 promotion** (carry last node; no duplication).
+- **Leaves are JCS bytes** of the value above.
+
+## Public Key Pinning (production)
+- In production, the **verifying public key is pinned** via config or compiled code:
+  - `pinned_pubkey_hex` **or** `pinned_pubkey_b64` (choose one).
+- With a pin present:
+  - Signature is checked **only against the pinned key**.
+  - If the manifest also includes a pubkey, it **must match** the pinned key (or fail).
+- Demo mode may omit the pin; production should not.
+
+## Config Presets
+- `sentinel_config.strict.json` (prod): `allow_unsigned=false`, `qtl_required=true`, **pinned key required**.
+- `sentinel_config.demo.json` (demo): `allow_unsigned=true`, `qtl_required=false`, no pinned key.
+
+## Output & Policy
+- Exit codes: `0 PASS`, `1 FAIL`, `2 config error`.
+- Writes `sentinel_status.json` atomically (tmp + replace).
+- Aggregates reasons; no timing oracles in failure paths.
