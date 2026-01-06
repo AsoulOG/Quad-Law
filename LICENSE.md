@@ -1,5 +1,6 @@
-OriginSTANDARD License (OSL-1.0)
+SPDX-License-Identifier: OSL-1.0
 
+OriginSTANDARD License (OSL-1.0)
 © Origin Standard LLC. All rights reserved.
 
 ⸻
