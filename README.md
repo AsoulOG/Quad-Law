@@ -1,4 +1,5 @@
-# Quad_Law
+# Quad-Law
+License: OriginSTANDARD License (OSL-1.0). See LICENSE.md.
 
 This repository defines the immutable verifier law for the Quadnition system.
 
