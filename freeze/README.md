@@ -1,4 +1,5 @@
 # Freeze Artifacts
+Freeze Reference: QuadSentinel Truth Window v1.3.4r4
 
 This directory contains immutable, timestamped freeze specifications
 for the QuadSentinel / OriginSTANDARD system.
