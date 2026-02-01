@@ -13,4 +13,3 @@ The contents of this repository are complete and final.
 
 This repository is intentionally archived.
 
-License: CC0-1.0 (Public Domain Dedication)
