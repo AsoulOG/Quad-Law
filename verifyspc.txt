@@ -38,3 +38,23 @@ There are no updates. Only forks.
 - Exit codes: `0 PASS`, `1 FAIL`, `2 config error`.
 - Writes `sentinel_status.json` atomically (tmp + replace).
 - Aggregates reasons; no timing oracles in failure paths.
+
+## Execution Authority Invariant (Frozen)
+
+Execution is admitted if and only if a valid SBCC artifact
+is produced by a boundary-local deterministic evaluation.
+
+The SBCC MUST be derived from:
+
+- Canonical action bytes (RFC8785)
+- Fresh single-use nonce
+- TLS session binding
+- Boundary-local live entropy commitment
+- Non-exportable epoch root key
+
+The root key MUST NOT sign directly.
+A per-action subkey MUST be derived.
+
+No alternate execution path exists.
+
+Any deviation constitutes a fork.
