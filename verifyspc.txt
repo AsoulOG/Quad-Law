@@ -44,6 +44,12 @@ There are no updates. Only forks.
 Execution is admitted if and only if a valid SBCC artifact
 is produced by a boundary-local deterministic evaluation.
 
+Irreversible state mutation MUST NOT occur unless SBCC validation returns PASS.
+
+All execution gating MUST occur prior to commit of any persistent state, value transfer, or external side-effect.
+
+No post-commit validation satisfies this invariant.
+
 The SBCC MUST be derived from:
 
 - Canonical action bytes (RFC8785)
